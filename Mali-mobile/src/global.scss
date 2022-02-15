@@ -1,0 +1,111 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/ionic-swiper';
+// global.scss pour swiper
+@import '~swiper/scss/effect-cards';
+@import '~swiper/scss/controller';
+@import '~swiper/scss/autoplay';
+@import '~swiper/scss/keyboard';
+@import '~swiper/scss/pagination';
+@import '~swiper/scss/scrollbar';
+@import '~swiper/scss/zoom';
+@import '~@ionic/angular/css/ionic-swiper';
+@import '~swiper/scss/effect-cards';
+@import '~swiper/scss';
+@import '~@ionic/angular/css/ionic-swiper';
+
+/* Optional CSS utils that can be commented out */
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+// .centerix {
+//     text-align: center;
+// }
+
+// .width60 {
+//     width: 60%;
+// }
+
+// .data {
+//     background-color: none;
+//     margin-top: 30px;
+// }
+
+// .weatherapi {
+//     position: absolute;
+//     background-color: transparent;
+//     text-align: center;
+//     width: 100%;
+//     padding: 5px;
+// }
+
+// .weatherapi2 {
+//     bottom: 0;
+//     background-color: transparent;
+//     width: 100%;
+//     padding: 5px;
+// }
+
+// .weather-details {
+//     width: 60%;
+//     float: left;
+//     padding-bottom: 20px;
+// }
+
+// .weather-img {
+//     width: 40%;
+//     float: left;
+//     text-align: right;
+//     padding-top: 25px;
+//     padding-right: 35px;
+// }
+
+// .weather-range {
+//     margin-bottom: 15px;
+// }
+
+// .hourly-content {
+//     width: 100vw;
+//     float: left;
+//     padding-left: 20px;
+//     padding-top: 10px;
+//     padding-bottom: 10px;
+// }
+
+// .hourly-time {
+//     width: 80px;
+//     float: left;
+//     img {
+//         width: 50px;
+//     }
+// }
+
+// .hourly-degree {
+//     width: 50%;
+//     float: left;
+//     padding-top: 30px;
+//     font-size: 1.5rem
+// }

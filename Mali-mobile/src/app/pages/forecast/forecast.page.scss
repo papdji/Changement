@@ -1,0 +1,69 @@
+ion-content {
+        --background: linear-gradient(#005eff, #819ef5, #f4f5f8, #f4f5f8);
+}
+
+.weather-card {
+    color: #000;
+    font-weight: normal;
+}
+
+.weather-header {
+    width: 100vw;
+    padding-left: 2px;
+    padding-top: 20px;
+    float: center;
+}
+
+.weather-header-condition {
+    width: 100%;
+    float: center;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    font-weight: normal;
+}
+
+.weather-header2 {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    width: 100vw;
+    float: center;
+}
+
+.weather-header2-date {
+    width: 60%;
+    float: left;
+    padding-top: 5px;
+    font-size: 1.5rem;
+}
+
+.weather-header2-degree {
+    width: 70%;
+    float: center;
+    font-size: 2rem;
+    font-size: 2em;
+    text-align: right;
+}
+
+// .weather-details {
+//     width: 70%;
+//     float: center;
+//     padding-bottom: 10px;
+// }
+
+.weather-range {
+    margin-bottom: auto;
+    justify-content: space-between;
+}
+
+// .weather-img {
+//     width: 40%;
+//     float: center;
+//     padding-top: 4px;
+//     padding-right: 6px;
+// }
+
+.weather-content {
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}

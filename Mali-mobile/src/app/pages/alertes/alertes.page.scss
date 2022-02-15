@@ -1,0 +1,40 @@
+@import '~swiper/scss';
+@import '~@ionic/angular/css/ionic-swiper';
+ion-content {
+    --background: linear-gradient(#1148e3 0%, #2959e2 12.25%, #3b68e5 16.25%, #4670e9 28.35%, #6e8ae6 38.23%, #7b9bfc 49.66%, #b1c4ff 75.69%, #c8d2ef 87.58%, #e1e1e1 100%);
+
+    ion-button {
+        color: #ffffff;
+        
+    }
+}
+:root {
+  --ion-safe-area-top: 20px;
+  --ion-safe-area-bottom: 22px;
+}
+
+ion-col > div {
+  background-color: #f7f7f7;
+  border: solid 1px #ddd;
+  padding: 10px;
+}
+
+ion-fab {
+    ion-fab-button {
+        margin-bottom: 3vh;
+        --background-hover: none;
+        border: 1vh solid var(--ion-color-white);
+        border-radius: 50%;
+        margin-top: 300%;
+    }
+}
+
+@media screen and (min-width:500px) {
+    .background-filter {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

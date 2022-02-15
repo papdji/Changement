@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Envoyer une alerte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form method="post" [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+    <div formGroupName="city">
+      <ion-item>
+        <ion-label position="floating" color="primary">Le lieu</ion-label>
+        <ion-select cancelText="Annuler" okText="oui">
+          <ion-select-option *ngFor="let city of citys" [value]="city">{{city}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div>
+      <ion-item>
+        <ion-label position="floating" color="primary">Catégorie d'alerte</ion-label>
+        <ion-select cancelText="Cancel" okText="OK">
+          <ion-select-option *ngFor="let categorie of categories" [value]="categorie">{{categorie}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+
+    <ion-item>
+        <ion-label position="floating" color="primary">Description</ion-label>
+        <ion-input type="text"  autocomplete="off"></ion-input>
+    </ion-item>
+
+  </form>
+  <ion-button color="success" class="submit-btn" expand="block" type="submit" [enable]="!validations_form.valid">Envoyer</ion-button>
+</ion-content>
