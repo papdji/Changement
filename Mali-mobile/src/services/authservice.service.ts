@@ -4,7 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthserviceService {
-  [x: string]: any;
-
+  login(value: any) {
+    throw new Error('Method not implemented.');
+  }
+  isEmailVerified: any;
   constructor() { }
 }

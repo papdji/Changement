@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { MenuController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
-import * as firebase from 'firebase/app';
 
 
 @Component({

@@ -1,0 +1,25 @@
+.demo-main-cont.demo-comp-listview { padding: 0; }
+.demo-comp-listview .demo-note { margin: 10px; }
+
+.md-country .mbsc-lv-img {
+    margin-top: -.6em;
+    width: 2em;
+}
+
+.md-continent {
+    font-size: 36px;
+    position: absolute;
+    height: 1em;
+    width: 1em;
+    top: 50%;
+    margin-top: -.5em;
+    text-align: center;
+}
+
+.mbsc-ltr .md-continent {
+    left: .42em;
+}
+
+.mbsc-rtl .md-continent {
+    right: .42em;
+}

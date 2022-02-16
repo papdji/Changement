@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { UsernameValidator } from '../validators/username.validator';
 import { PhoneValidator } from '../validators/phone.validator';
 import { PasswordValidator } from '../validators/password.validator';
 import { CountryPhone } from './country-phone.model';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 
 
 @Component({
@@ -22,12 +23,15 @@ export class RegisterPage implements OnInit {
   countries: Array<CountryPhone>;
   genders: Array<string>;
   profiles: Array<string>;
+  auth: any;
+  email: any;
 
 
 
   constructor(
     public formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+
   ) { }
 
   ngOnInit() {
@@ -78,7 +82,7 @@ export class RegisterPage implements OnInit {
       username: new FormControl('', Validators.compose([
         UsernameValidator.validUsername,
         Validators.maxLength(25),
-        Validators.minLength(5),
+        Validators.minLength(6),
         Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
         Validators.required
       ])),
@@ -133,9 +137,25 @@ export class RegisterPage implements OnInit {
       { type: 'pattern', message: 'Vous devez accepter les termes et conditions.' }
     ],
   };
+//  registerUser(){ const auth = getAuth();
+//   createUserWithEmailAndPassword(auth, email, password)
+//     .then((userCredential) => {
+//       // Signed in
+//       const user = userCredential.user;
+//       // ...
+//     })
+//     .catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       // ..
+//     });
+
+//  }
 
   onSubmit(values){
     console.log(values);
+
     this.router.navigate(["/home"]);
   }
 }
+
