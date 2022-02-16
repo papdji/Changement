@@ -5,8 +5,7 @@ import { UsernameValidator } from '../validators/username.validator';
 import { PhoneValidator } from '../validators/phone.validator';
 import { PasswordValidator } from '../validators/password.validator';
 import { CountryPhone } from './country-phone.model';
-import { doc, setDoc } from "firebase/firestore";
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { doc, getFirestore, setDoc } from 'firebase/firestore';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -141,9 +140,9 @@ export class RegisterPage implements OnInit {
     console.log(values);
 
     await setDoc(doc(this.db, "Utilisateur"),
-    {
-      values
-    });
+
+      values()
+    );
 
     this.router.navigate(["/home"]);
   };

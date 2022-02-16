@@ -64,6 +64,7 @@ export class LoginPage implements OnInit {
           "email":user.email,
           "id":user.uid,
         });
+        this.router.navigate(['alertes'])
         console.log(user)
         // ...
       }).catch((error) => {
@@ -75,6 +76,7 @@ export class LoginPage implements OnInit {
         // Le type AuthCredential qui a été utilisé.
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
+        this.presentAlert();
         console.log(error)
       });
   }
