@@ -4,9 +4,8 @@ import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthserviceService } from 'src/services/authservice.service';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-
-
-
+import { doc, getFirestore, setDoc } from 'firebase/firestore';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +13,13 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  data: User;
   login = { username: '', password: '' };
   error = '';
+  private db= getFirestore();
+  username: any;
+  password: any;
+  user:'';
 
 
   constructor(
@@ -48,12 +51,19 @@ export class LoginPage implements OnInit {
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         // Cela vous donne un jeton d'accès Google. Vous pouvez l'utiliser pour accéder à l'API Google.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         // Les informations sur l'utilisateur connecté.
         const user = result.user;
+        await setDoc(doc(this.db, "Utilisateur", user.uid),
+        {
+          "username": user.displayName,
+          "password": "",
+          "email":user.email,
+          "id":user.uid,
+        });
         console.log(user)
         // ...
       }).catch((error) => {

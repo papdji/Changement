@@ -1,5 +1,4 @@
-import { IonicSafeString, AlertInput, AlertButton, AnimationBuilder } from "@ionic/angular";
-import { AlertAttributes, Mode } from "@ionic/core";
+import { AnimationBuilder } from "@ionic/angular";
 export interface ForecastWeather {
     location: Location;
     current: Current;
@@ -154,21 +153,22 @@ export interface Forecast {
 }
 
 export default interface Alerts {
-  alert: string;
-  header?: string;
-  subHeader?: string;
-  message?: string | IonicSafeString;
-  cssClass?: string | string[];
-  inputs?: AlertInput[];
-  buttons?: (AlertButton | string)[];
-  backdropDismiss?: boolean;
-  translucent?: boolean;
-  animated?: boolean;
-  htmlAttributes?: AlertAttributes;
-
-  mode?: Mode;
-  keyboardClose?: boolean;
-  id?: string;
+  headline:	string;
+  city: string;
+  categorie: string;
+  description: string;
+  msgType: string;
+  severity:	string;
+  urgency:	string;
+  areas:	string;
+  category: string;
+  certainty:	string;
+  event: 	string;
+  note:	string;
+  effective: 	number;
+  expires: 	string;
+  desc: string;
+  instruction: string;
 
   enterAnimation?: AnimationBuilder;
   leaveAnimation?: AnimationBuilder;

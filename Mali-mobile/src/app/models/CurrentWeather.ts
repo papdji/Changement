@@ -64,8 +64,8 @@ export interface Alerts {
   header?: string;
   subHeader?: string;
   message?: string | IonicSafeString;
-  cssClass?: string | string[];
-  inputs?: AlertInput[];
+  cssClass?: string;
+  inputs?: AlertInput;
   buttons?: (AlertButton | string)[];
   backdropDismiss?: boolean;
   translucent?: boolean;

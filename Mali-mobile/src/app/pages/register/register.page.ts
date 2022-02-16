@@ -5,16 +5,15 @@ import { UsernameValidator } from '../validators/username.validator';
 import { PhoneValidator } from '../validators/phone.validator';
 import { PasswordValidator } from '../validators/password.validator';
 import { CountryPhone } from './country-phone.model';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-
-
+import { doc, setDoc } from "firebase/firestore";
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  private db = getFirestore();
 
   validations_form: FormGroup;
   matching_passwords_group: FormGroup;
@@ -31,6 +30,7 @@ export class RegisterPage implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
+
 
   ) { }
 
@@ -137,25 +137,15 @@ export class RegisterPage implements OnInit {
       { type: 'pattern', message: 'Vous devez accepter les termes et conditions.' }
     ],
   };
-//  registerUser(){ const auth = getAuth();
-//   createUserWithEmailAndPassword(auth, email, password)
-//     .then((userCredential) => {
-//       // Signed in
-//       const user = userCredential.user;
-//       // ...
-//     })
-//     .catch((error) => {
-//       const errorCode = error.code;
-//       const errorMessage = error.message;
-//       // ..
-//     });
-
-//  }
-
-  onSubmit(values){
+  async onSubmit(values) {
     console.log(values);
 
-    this.router.navigate(["/home"]);
-  }
-}
+    await setDoc(doc(this.db, "Utilisateur"),
+    {
+      values
+    });
 
+    this.router.navigate(["/home"]);
+  };
+
+}
