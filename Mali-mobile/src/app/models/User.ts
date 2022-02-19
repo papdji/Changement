@@ -17,3 +17,8 @@ export interface Alerts{
   categorie: string;
   description: string;
 }
+export interface UserProfile {
+  email: string;
+  fullName: string;
+}
+

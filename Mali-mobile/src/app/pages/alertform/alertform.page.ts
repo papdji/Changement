@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { updateDoc } from 'firebase/firestore';
+import { getStorage, ref } from "firebase/storage";
 
 
 @Component({
@@ -49,9 +51,14 @@ export class AlertformPage implements OnInit {
     'description': [
       { type: 'required', message: 'Description est requis.' }
     ]
+
   }
-  onSubmit(values){
-    console.log(values);
+
+  onSubmit(city, categorie, description, fil){
+    console.log(city, categorie, fil);
+    console.log(Error);
+    const storage = getStorage();
+    
     this.router.navigate(["/alertes"]);
   }
 

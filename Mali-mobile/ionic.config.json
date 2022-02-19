@@ -1,8 +1,9 @@
 {
-    "name": "Mali-Climat",
-    "integrations": {
-        "capacitor": {}
-    },
-    "type": "angular",
-    "id": "e582d34b"
+  "name": "Mali-Climat",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "e582d34b"
 }

@@ -59,7 +59,11 @@ const routes: Routes = [
   {
     path: 'conditions',
     loadChildren: () => import('./pages/conditions/conditions.module').then( m => m.ConditionsPageModule)
+  },  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   }
+
 
 ];
 

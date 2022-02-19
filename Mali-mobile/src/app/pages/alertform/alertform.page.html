@@ -1,17 +1,14 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button
-          [text]="buttonText"
-          [icon]="buttonIcon">
-      </ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Envoyer une alerte</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form method="post" [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+  <form method="post" [formGroup]="validations_form" (ngSubmit)="onSubmit">
     <div formGroupName="city">
       <ion-item>
         <ion-label position="floating" color="primary">Le lieu</ion-label>
@@ -31,15 +28,17 @@
 
 
     <ion-item>
-        <ion-label position="floating" color="primary">Description</ion-label>
-        <ion-input type="text"  autocomplete="off"></ion-input>
-    </ion-item>
-    
-    <ion-item>
       <ion-label position="floating" color="primary">Description</ion-label>
-      <ion-input type="file"  ></ion-input>
-  </ion-item>
+      <ion-input type="text" autocomplete="off"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label position="floating" color="primary">Images d'illustration</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-input type="file"></ion-input>
+    </ion-item>
   </form>
-  <ion-button color="success" class="submit-btn" expand="block" type="submit" [enable]="!validations_form.valid">Envoyer</ion-button>
+  <ion-button color="success" class="submit-btn" expand="block" type="submit">Envoyer
+  </ion-button>
 </ion-content>

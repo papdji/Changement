@@ -6,6 +6,7 @@ import { PhoneValidator } from '../validators/phone.validator';
 import { PasswordValidator } from '../validators/password.validator';
 import { CountryPhone } from './country-phone.model';
 import { doc, getFirestore, setDoc } from 'firebase/firestore';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -21,8 +22,7 @@ export class RegisterPage implements OnInit {
   countries: Array<CountryPhone>;
   genders: Array<string>;
   profiles: Array<string>;
-  auth: any;
-  email: any;
+
 
 
 
@@ -138,11 +138,31 @@ export class RegisterPage implements OnInit {
   };
   async onSubmit(values) {
     console.log(values);
+    const auth = getAuth();
+    // console.log(values.email, values.password)
+    createUserWithEmailAndPassword(auth, values.email, values.password)
+      .then(async (userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(values);
+        await setDoc(doc(this.db, "Utilisateur", 'testtt'),
+        {
+          email: values.email,
+          username: values.username,
+          terms: values.termes,
+          profile: values.profile,
 
-    await setDoc(doc(this.db, "Utilisateur"),
+        }
+      );
+      console.log(values);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error)
+      });
 
-      values()
-    );
+
 
     this.router.navigate(["/home"]);
   };
