@@ -14,7 +14,7 @@ export class CurrentPage implements OnInit {
   data: CurrentWeather;
   error: string;
   weatherForm = new FormGroup({
-    cityName: new FormControl(environment.CURRENT_CITY, [Validators.required, Validators.minLength(2)])
+    cityName: new FormControl(environment. DEFAULT_CITY, [Validators.required, Validators.minLength(2)])
   })
 
   constructor(private api: APIService) { }

@@ -18,7 +18,7 @@ export class ForecastPage implements OnInit {
   constructor(private api: APIService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.weatherForm.patchValue({cityName: environment.CURRENT_CITY});
+    this.weatherForm.patchValue({cityName: environment. DEFAULT_CITY});
     this.getData();
   }
 

@@ -41,73 +41,49 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-// .centerix {
-//     text-align: center;
-// }
 
-// .width60 {
-//     width: 60%;
-// }
+.centerix {
+  text-align: center;
+}
 
-// .data {
-//     background-color: none;
-//     margin-top: 30px;
-// }
+.width60 {
+  width: 60%;
+}
 
-// .weatherapi {
-//     position: absolute;
-//     background-color: transparent;
-//     text-align: center;
-//     width: 100%;
-//     padding: 5px;
-// }
+.data {
+  margin-top: 20px;
+}
 
-// .weatherapi2 {
-//     bottom: 0;
-//     background-color: transparent;
-//     width: 100%;
-//     padding: 5px;
-// }
 
-// .weather-details {
-//     width: 60%;
-//     float: left;
-//     padding-bottom: 20px;
-// }
+.weather-card {
+  background-color: var(--weather-card);
+}
 
-// .weather-img {
-//     width: 40%;
-//     float: left;
-//     text-align: right;
-//     padding-top: 25px;
-//     padding-right: 35px;
-// }
 
-// .weather-range {
-//     margin-bottom: 15px;
-// }
 
-// .hourly-content {
-//     width: 100vw;
-//     float: left;
-//     padding-left: 20px;
-//     padding-top: 10px;
-//     padding-bottom: 10px;
-// }
 
-// .hourly-time {
-//     width: 80px;
-//     float: left;
-//     img {
-//         width: 50px;
-//     }
-// }
+.weather-content {
+  padding-left: 20px;
+//   padding-top: 10px;
+//   padding-bottom: 20px;
+}
 
-// .hourly-degree {
-//     width: 50%;
-//     float: left;
-//     padding-top: 30px;
-//     font-size: 1.5rem
-// }
+
+.weather-range {
+  margin-bottom: 1em;
+}
+
+.hourly-content {
+  width: 100vw; float: left; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;
+}
+
+.hourly-time {
+  width: 80px; float: left;
+
+}
+
+.hourly-degree {
+  width: 50%; float: left; padding-top: 30px; font-size: 1.5rem
+}
 
 @import "~@mobiscroll/angular/dist/css/mobiscroll.scss";

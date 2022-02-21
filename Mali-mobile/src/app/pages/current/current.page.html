@@ -48,7 +48,7 @@
     </form>
 
     <div *ngIf="data" class="data">
-        <p>Dernière mis en jour:{{ data.current.last_updated }}</p>
+        <p style="text-align: center;">Dernière mis en jour: </p><p style="text-align: center;">{{ data.current.last_updated }}</p>
         <ion-item>
             <ion-label slot="start">Actuellement</ion-label>
             <ion-note slot="end"> {{ data.current.condition.text }} {{ data.current.temp_c }} ℃ </ion-note>
