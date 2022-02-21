@@ -21,8 +21,8 @@ registerLocaleData(localeFr);
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [ 
-    MbscModule, 
+  imports: [
+    MbscModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -38,4 +38,6 @@ registerLocaleData(localeFr);
     { provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  
+}

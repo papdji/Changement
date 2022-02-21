@@ -2,5 +2,5 @@
 	"appId": "moh.app.maliclimat",
 	"appName": "maliclimat",
 	"webDir": "www",
-	"bundledWebRuntime": true
+	"bundledWebRuntime": false
 }
