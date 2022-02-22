@@ -1,9 +1,8 @@
-
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-  </ion-buttons>
+    </ion-buttons>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="accueil">Retour</ion-back-button>
       <ion-button onclick="dismissModal()">Fermer</ion-button>
@@ -14,7 +13,7 @@
   <ion-button expand="full" id="bamako">
     Bamako
   </ion-button>
-  <ion-modal trigger="bamako" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+  <ion-modal trigger="bamako" [initialBreakpoint]="0.8" [breakpoints]="[0, 0.8, 1]">
     <ng-template>
       <ion-header>
         <ion-toolbar color="primary">
@@ -24,17 +23,39 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-item>
-          Pluviométrie annuelle
-          <p>Description</p>
-        </ion-item>
+        <ion-card>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/changement-climatique-3e1a1.appspot.com/o/localites%2FBamako_037.jpg?alt=media&token=5866c9d0-516a-4ada-b6f4-05cf97740c53"
+            alt="">
+          <ion-item>
+
+            <ion-slides>
+              <ion-slide>
+                <div class="slide">
+                  <h2>Pluviométrie annuelle</h2>
+                  <p>
+                    Bamako occupe la frange correspondant à la zone de la Savane soudanienne occidentale. Elle bénéficie
+                    de ce fait d'un climat tropical assez humide avec un total des précipitations annuelles de 878
+                    millimètres mais avec une saison sèche et une saison des pluies bien marquées. <br> Le mois le plus
+                    sec ne reçoit en effet
+                    pas la moindre goutte de pluie (précipitations égales à 0 mm en décembre) tandis que le mois le plus
+                    pluvieux est bien arrosé (précipitations égales à 234 mm en août). Les pluies régulières estivales
+                    permettent le
+                    développement d'une savane arborée ainsi que la culture de plantes telles que le sorgho, le maïs et
+                    le coton.
+                  </p>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </ion-item>
+        </ion-card>
       </ion-content>
     </ng-template>
   </ion-modal>
   <ion-button expand="full" id="kayes">
     Kayes
   </ion-button>
-  <ion-modal trigger="kayes" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+  <ion-modal trigger="kayes" [initialBreakpoint]="0.8" [breakpoints]="[0, 0.8, 1]">
     <ng-template>
       <ion-header>
         <ion-toolbar color="primary">
@@ -44,17 +65,36 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-item>
-          Pluviométrie annuelle
-          <p>Description</p>
-        </ion-item>
+        <ion-card>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/changement-climatique-3e1a1.appspot.com/o/localites%2FH%C3%B4tel_de_Ville_de_Kayes.jpg?alt=media&token=2c6d2a1e-9704-4888-aeeb-7c3bc34f1b8a"
+            alt="">
+          <ion-item>
+
+            <ion-slides>
+              <ion-slide>
+                <div class="slide">
+                  <h2>Pluviométrie annuelle</h2>
+                  <p>
+                    Kayes est surnommée « La cocotte-minute de l'Afrique » en raison de ses températures moyennes très
+                    élevées. En effet, elle est entourée de massifs montagneux très riches en fer qui contribuent à
+                    l'élévation de la température[Selon qui ?]. La température moyenne maximale du mois le plus torride
+                    de l'année (avril) y est de 44 °C2. La température moyenne annuelle est de 30 °C à Kayes. La durée
+                    moyenne annuelle d'ensoleillement y est de 3 049 h dans l'ensemble de la région3.
+                    Différents sites se trouvent dans les environs de Kayes
+                  </p>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </ion-item>
+        </ion-card>
       </ion-content>
     </ng-template>
   </ion-modal>
   <ion-button expand="full" id="koulikoro">
     Koulikoro
   </ion-button>
-  <ion-modal trigger="koulikoro" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+  <ion-modal trigger="koulikoro" [initialBreakpoint]="0.8" [breakpoints]="[0, 0.8, 1]">
     <ng-template>
       <ion-header>
         <ion-toolbar color="primary">
@@ -64,17 +104,33 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-item>
-          Pluviométrie annuelle
-          <p>Description</p>
-        </ion-item>
+        <ion-card>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/changement-climatique-3e1a1.appspot.com/o/localites%2F640px-ExploiteursDuSableRetournantaKoulikoro.jpg?alt=media&token=43147698-b759-4c99-99f8-41b6c844ba3b"
+            alt="Koulikoro">
+          <ion-item>
+
+            <ion-slides>
+              <ion-slide>
+                <div class="slide">
+                  <h2>Pluviométrie annuelle</h2>
+                  <p>
+                    La ville est située sur la rive gauche du fleuve Niger, à 60 km au nord-est de Bamako, par la route
+                    nationale RN 27. Elle s'étend sur la plaine en bordure du fleuve surplombée par un plateau extension
+                    des monts Manding appelé le Niana Koulou.
+                  </p>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </ion-item>
+        </ion-card>
       </ion-content>
     </ng-template>
   </ion-modal>
   <ion-button expand="full" id="sikasso">
     Sikasso
   </ion-button>
-  <ion-modal trigger="sikasso" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+  <ion-modal trigger="sikasso" [initialBreakpoint]="0.8" [breakpoints]="[0, 0.8, 1]">
     <ng-template>
       <ion-header>
         <ion-toolbar color="primary">
@@ -84,17 +140,36 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-item>
-          Pluviométrie annuelle
-          <p>Description</p>
-        </ion-item>
+        <ion-card>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/changement-climatique-3e1a1.appspot.com/o/localites%2Fslide_4.jpg?alt=media&token=01d75994-d543-426f-8962-11bd00acb47d"
+            alt="sikasso">
+          <ion-item>
+
+            <ion-slides>
+              <ion-slide>
+                <div class="slide">
+                  <h2>Pluviométrie annuelle</h2>
+                  <p>
+                    Bénéficiant d’un climat sous-tropical avec des précipitations très abondantes durant la saison des
+                    pluies (298,6 mm de hauteur de pluie pour le mois le plus arrosé), la production agricole est
+                    abondante. Les
+                    fruits et légumes sont disponibles toute l’année et l'autosuffisance alimentaire est assurée à la
+                    différence du reste
+                    du Mali.
+                  </p>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </ion-item>
+        </ion-card>
       </ion-content>
     </ng-template>
   </ion-modal>
   <ion-button expand="full" id="segou">
     Ségou
   </ion-button>
-  <ion-modal trigger="segou" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+  <ion-modal trigger="segou" [initialBreakpoint]="0.8" [breakpoints]="[0, 0.8, 1]">
     <ng-template>
       <ion-header>
         <ion-toolbar color="primary">
@@ -104,17 +179,40 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-item>
-          Pluviométrie annuelle
-          <p>Description</p>
-        </ion-item>
+        <ion-card>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/changement-climatique-3e1a1.appspot.com/o/localites%2F1-0.jpg?alt=media&token=06556f02-1dcf-4328-ab06-acddfe97107c"
+            alt="ségou">
+          <ion-item>
+
+            <ion-slides>
+              <ion-slide>
+                <div class="slide">
+                  <h2>Pluviométrie annuelle</h2>
+                  <p>
+                    Située au centre du Mali, la région de Ségou a une superficie de 64 947 km2 (environ 5 % du Mali).
+                    Elle est limitée au sud par la région de Sikasso, au sud-est par le Burkina Faso, à l'est par la
+                    région de Mopti au nord par la Mauritanie et la région de Tombouctou et à l'ouest par la région de
+                    Koulikoro.
+                    Avec les régions de Mopti et Koulikoro, elle forme ce qui est communément désigné comme le Centre du
+                    Mali.
+                    essentiellement située dans la zone sahélienne où elle bénéficie d’un climat semi-aride (moyenne des
+                    précipitations annuelles : 513 mm). La présence de plusieurs cours d’eau (elle est traversée par le
+                    fleuve Niger (sur 292 km) ainsi que la rivière Bani) permet les cultures irriguées.
+                    Les principales villes sont Ségou, San, Niono et les localités de Markala et Dioro,
+                  </p>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </ion-item>
+        </ion-card>
       </ion-content>
     </ng-template>
   </ion-modal>
   <ion-button expand="full" id="mopti">
     Mopti
   </ion-button>
-  <ion-modal trigger="mopti" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+  <ion-modal trigger="mopti" [initialBreakpoint]="0.8" [breakpoints]="[0, 0.8, 1]">
     <ng-template>
       <ion-header>
         <ion-toolbar color="primary">
@@ -134,7 +232,7 @@
   <ion-button expand="full" id="tombouctou">
     Tombouctou
   </ion-button>
-  <ion-modal trigger="tombouctou" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+  <ion-modal trigger="tombouctou" [initialBreakpoint]="0.8" [breakpoints]="[0, 0.8, 1]">
     <ng-template>
       <ion-header>
         <ion-toolbar color="primary">
@@ -154,7 +252,7 @@
   <ion-button expand="full" id="gao">
     Gao
   </ion-button>
-  <ion-modal trigger="gao" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+  <ion-modal trigger="gao" [initialBreakpoint]="0.8" [breakpoints]="[0, 0.8, 1]">
     <ng-template>
       <ion-header>
         <ion-toolbar color="primary">
@@ -174,7 +272,7 @@
   <ion-button expand="full" id="kidal">
     Kidal
   </ion-button>
-  <ion-modal trigger="kidal" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+  <ion-modal trigger="kidal" [initialBreakpoint]="0.8" [breakpoints]="[0, 0.8, 1]">
     <ng-template>
       <ion-header>
         <ion-toolbar color="secondary">
@@ -194,7 +292,7 @@
   <ion-button expand="full" id="koutiala">
     koutiala
   </ion-button>
-  <ion-modal trigger="koutiala" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+  <ion-modal trigger="koutiala" [initialBreakpoint]="0.8" [breakpoints]="[0, 0.8, 1]">
     <ng-template>
       <ion-header>
         <ion-toolbar color="secondary">
@@ -214,7 +312,7 @@
   <ion-button expand="full" id="san">
     San
   </ion-button>
-  <ion-modal trigger="san" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+  <ion-modal trigger="san" [initialBreakpoint]="0.8" [breakpoints]="[0, 0.8, 1]">
     <ng-template>
       <ion-header>
         <ion-toolbar color="primary">
@@ -231,10 +329,10 @@
       </ion-content>
     </ng-template>
   </ion-modal>
-  <ion-button expand="full" id="niono">
+  <ion-button expand="full" id="niono" style="left: auto;">
     Niono
   </ion-button>
-  <ion-modal trigger="niono" [initialBreakpoint]="0.5" [breakpoints]="[0, 0.5, 1]">
+  <ion-modal trigger="niono" [initialBreakpoint]="0.8" [breakpoints]="[0, 0.8, 1]">
     <ng-template>
       <ion-header>
         <ion-toolbar color="primary">
