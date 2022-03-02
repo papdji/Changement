@@ -34,6 +34,11 @@
 @import '~swiper/scss';
 @import '~@ionic/angular/css/ionic-swiper';
 
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+
 /* Optional CSS utils that can be commented out */
 
 @import "~@ionic/angular/css/padding.css";
@@ -64,8 +69,8 @@
 
 .weather-content {
   padding-left: 20px;
-//   padding-top: 10px;
-//   padding-bottom: 20px;
+  //   padding-top: 10px;
+  //   padding-bottom: 20px;
 }
 
 
@@ -74,16 +79,24 @@
 }
 
 .hourly-content {
-  width: 100vw; float: left; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;
+  width: 100vw;
+  float: left;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .hourly-time {
-  width: 80px; float: left;
+  width: 80px;
+  float: left;
 
 }
 
 .hourly-degree {
-  width: 50%; float: left; padding-top: 30px; font-size: 1.5rem
+  width: 50%;
+  float: left;
+  padding-top: 30px;
+  font-size: 1.5rem
 }
 
 @import "~@mobiscroll/angular/dist/css/mobiscroll.scss";
