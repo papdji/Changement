@@ -1,4 +1,4 @@
-package pl.appselio.weatherify;
+package moh.app.maliclimat;
 
 import com.getcapacitor.BridgeActivity;
 

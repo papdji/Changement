@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { updateDoc } from 'firebase/firestore';
-import { getStorage, ref } from "firebase/storage";
-
+import { LoadingController } from '@ionic/angular';
+import { collection, getDocs, getFirestore, query, updateDoc } from 'firebase/firestore';
+import { CurrentWeather } from 'src/app/models/CurrentWeather';
 
 @Component({
   selector: 'app-alertform',
@@ -11,55 +10,75 @@ import { getStorage, ref } from "firebase/storage";
   styleUrls: ['./alertform.page.scss'],
 })
 export class AlertformPage implements OnInit {
-  validations_form: FormGroup;
-  citys: Array<string>;
-  categories: Array<string>;
+  data: CurrentWeather;
 
-
-  constructor(public formBuilder: FormBuilder,
-    private router: Router
-    ) { }
+  public citys: any;
+  public categorieSelected: string;
+  public illnessSelected: string;
+  private db = getFirestore();
+  private loading: any;
+  constructor(
+    private loadingCtrl: LoadingController
+  ) { }
 
   ngOnInit() {
-    this.citys = [
-      "Bamako",
-      "Kayes",
-      "Koulikoro",
-      "Sikasso",
-      "Ségou",
-      "Mopti",
-      "Tombouctou",
-      "Gao",
-      "Kidal",
-      "Menaka",
-      "Koutiala",
-      "Niono"
-    ]
-
-    this.categories = [
-      "Incendie",
-      "Inonndation",
-      "Secheresse"
-    ];
-    this.validations_form = this.formBuilder.group({
-      city: new FormControl('', Validators.required),
-      categorie: new FormControl('', Validators.required),
-    })
-
-  }
-  validation_messages = {
-    'description': [
-      { type: 'required', message: 'Description est requis.' }
-    ]
+    this.presentLoadingDefault();
+    this.getalerte();
 
   }
 
-  onSubmit(city, categorie, description, fil){
-    console.log(city, categorie, fil);
-    console.log(Error);
-    const storage = getStorage();
-    
-    this.router.navigate(["/alertes"]);
+  public addAlerte(data: any) {
+    console.log('Alerte : ', data.value);
+  }
+
+  public async getalerte() {
+    const q = query(collection(this.db, 'Recommendation'));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((alerte) => {
+      const id = alerte.id;
+      const result = [
+        id, alerte.data()
+      ];
+    });
+    this.loading.dismiss();
+  }
+
+  public alerteChanged(data: any) {
+    const convert = data.value.alerte.split('@');
+    this.categorieSelected = convert[1];
+    const city = document.getElementById('city');
+    city.setAttribute('value', '');
+    this.presentLoadingDefault();
+    this.getCitys(convert);
+  }
+
+  public cityChanged(data: any){
+    const convert = data.value.city.split('@');
+    this.illnessSelected = convert[1];
+  }
+
+  public async getCitys(_uid: string) {
+    this.citys = [];
+    const querySnapshot = await getDocs(
+      collection(this.db, 'Alertes')
+    );
+    querySnapshot.forEach((document) => {
+      const id = document.id;
+      const result = [
+        id, document.data()
+      ];
+      this.citys.push(result);
+    });
+    this.loading.dismiss();
+  }
+
+  public async presentLoadingDefault() {
+    this.loading = await this.loadingCtrl.create({
+      message: '<span>Chargement des données...</span>',
+    });
+    await this.loading.present();
   }
 
 }
+
+

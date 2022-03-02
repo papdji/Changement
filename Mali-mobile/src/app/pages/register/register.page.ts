@@ -1,170 +1,87 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsernameValidator } from '../validators/username.validator';
-import { PhoneValidator } from '../validators/phone.validator';
-import { PasswordValidator } from '../validators/password.validator';
-import { CountryPhone } from './country-phone.model';
-import { doc, getFirestore, setDoc } from 'firebase/firestore';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
+import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import { User } from 'src/app/models/User';
+import { AuthserviceService } from 'src/services/authservice.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  public confirmationResult: any;
+  private auth = getAuth();
+  private recaptchaVerifier: any;
+  private user = new User();
   private db = getFirestore();
-
-  validations_form: FormGroup;
-  matching_passwords_group: FormGroup;
-  country_phone_group: FormGroup;
-
-  countries: Array<CountryPhone>;
-  genders: Array<string>;
-  profiles: Array<string>;
-
-
-
-
   constructor(
-    public formBuilder: FormBuilder,
-    private router: Router,
-
-
+    private authService: AuthserviceService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    //  Nous n'utilisons que quelques pays au hasard, cependant, vous pouvez utiliser les pays dont vous avez besoin en les ajoutant simplement à cette liste.
-    // vous pouvez également utiliser une bibliothèque pour obtenir tous les pays du monde.
-    this.countries = [
-      new CountryPhone('ML', 'Mali'),
-      new CountryPhone('BF', 'Burkina Faso'),
-      new CountryPhone('SN', 'Sénégal'),
-      new CountryPhone('CI', 'Ivoir'),
-      new CountryPhone('FR', 'France')
-    ];
+  }
 
-    this.genders = [
-      "Homme",
-      "Femme"
-    ];
+  public signInWithPhone(data: any){
+    this.auth.languageCode = 'fr';
+    console.log(data.value);
+    this.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
+      size: 'invisible',
+      callback: (response) => {
+        console.log('Response : ', response);
+        this.user.displayName = data.value.firstName+' '+data.value.lastName;
+        this.user.phoneNumber = data.value.phone;
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
+      },
+      'expired-callback': (error) => {
+        // Response expired. Ask user to solve reCAPTCHA again.
+        console.log('Expire error : ', error);
+      }
+    }, this.auth);
 
-    this.profiles = [
-      "Cultivateur",
-      "Jardinier",
-      "Particulier",
-      "Acteur du climat"
-    ];
-
-    this.matching_passwords_group = new FormGroup({
-      password: new FormControl('', Validators.compose([
-        Validators.minLength(5),
-        Validators.required,
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
-      ])),
-      confirm_password: new FormControl('', Validators.required)
-    }, (formGroup: FormGroup) => {
-      return PasswordValidator.areEqual(formGroup);
-    });
-
-    let country = new FormControl('', Validators.required);
-    let phone = new FormControl('', Validators.compose([
-      Validators.required,
-      PhoneValidator.validCountryPhone(country)
-    ]));
-    this.country_phone_group = new FormGroup({
-      country: country,
-      phone: phone
-    });
-
-    this.validations_form = this.formBuilder.group({
-      username: new FormControl('', Validators.compose([
-        UsernameValidator.validUsername,
-        Validators.maxLength(25),
-        Validators.minLength(6),
-        Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
-        Validators.required
-      ])),
-      name: new FormControl('', Validators.required),
-      lastname: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      gender: new FormControl('', Validators.required),
-      profile: new FormControl('', Validators.required),
-      country_phone: this.country_phone_group,
-      matching_passwords: this.matching_passwords_group,
-      terms: new FormControl(true, Validators.pattern('true'))
+    signInWithPhoneNumber(this.auth, data.value.phone, this.recaptchaVerifier)
+    .then((confirmationResult) => {
+      // SMS sent. Prompt user to type the code from the message, then sign the
+      // user in with confirmationResult.confirm(code).
+      this.confirmationResult = confirmationResult;
+      console.log('confirmation result : ', this.confirmationResult);
+    }).catch((error) => {
+      // Error; SMS not sent
+      console.log('SMS pas envoyer : ', error);
     });
   }
 
-  validation_messages = {
-    'username': [
-      { type: 'required', message: 'Le nom utilisateur est requis.' },
-      { type: 'minlength', message: 'Le nom utilisateur doit comporter au moins 5 caractères.' },
-      { type: 'maxlength', message: 'Le nom utilisateur ne peut pas comporter plus de 25 caractères.' },
-      { type: 'pattern', message: 'Votre nom utilisateur ne doit contenir que des chiffres et des lettres.' },
-      { type: 'validUsername', message: 'Votre nom utilisateur a déjà été pris.' }
-    ],
-    'name': [
-      { type: 'required', message: 'Nom est requis.' }
-    ],
-    'lastname': [
-      { type: 'required', message: 'Prénom est requis.' }
-    ],
-    'email': [
-      { type: 'required', message: 'Email est requis.' },
-      { type: 'pattern', message: 'Veuillez entrer un email valide.' }
-    ],
-    'phone': [
-      { type: 'required', message: 'Phone est requis.' },
-      { type: 'validCountryPhone', message: 'Le téléphone est incorrect pour le pays sélectionné.' }
-    ],
-    'password': [
-      { type: 'required', message: 'Mot de passe est requis.' },
-      { type: 'minlength', message: 'Le mot de passe doit comporter au moins 5 caractères.' },
-      { type: 'pattern', message: 'Votre mot de passe doit contenir au moins une majuscule, une minuscule et un chiffre.' }
-    ],
-    'confirm_password': [
-      { type: 'required', message: 'Confirmation du mot de passe est requis.' }
-    ],
-    'matching_passwords': [
-      { type: 'areEqual', message: 'Non concordance des mots de passe.' }
-    ],
-    'terms': [
-      { type: 'pattern', message: 'Vous devez accepter les termes et conditions.' }
-    ],
-  };
-  async onSubmit(values) {
-    console.log(values);
-    const auth = getAuth();
-    // console.log(values.email, values.password)
-    createUserWithEmailAndPassword(auth, values.email, values.password)
-      .then(async (userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(values);
-        await setDoc(doc(this.db, "Utilisateur", 'testtt'),
-        {
-          email: values.email,
-          username: values.username,
-          terms: values.termes,
-          profile: values.profile,
+  public checkConfirmationCode(data: any){
+    this.confirmationResult.confirm(data.value.code).then( async (result) => {
+      // User signed in successfully.
+      const user = result.user;
+      this.setCurrentUser(this.auth.currentUser);
+      const docRef = doc(this.db, '/users/', user.uid);
+      const snapDoc = await getDoc(docRef);
+      // const foundUser
+      if (!snapDoc.exists()) {
+        setDoc(
+          doc(this.db, 'users', user.uid), {
+            displayName: this.user.displayName,
+            phoneNumber: this.user.phoneNumber,
+            photoURL: this.user.photoURL
+          }
+        );
+        console.log(this.user);
+      }else {
+        console.log('User already exists');
+      }
+      this.router.navigateByUrl('/profile');
+    }).catch((error) => {
+      // User couldn't sign in (bad verification code?)
+      console.log('Error: ', error);
+    });
+  }
 
-        }
-      );
-      console.log(values);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error)
-      });
-
-
-
-    this.router.navigate(["/home"]);
-  };
+  public setCurrentUser(user: any){
+    localStorage.setItem('user', JSON.stringify(user));
+  }
 
 }

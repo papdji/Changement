@@ -1,51 +1,21 @@
-<ion-content padding class="background" [fullscreen]="true">
-  <ion-row>
-    <ion-col size="2"><br><br>
-      <span>
-        <ion-back-button>retour</ion-back-button>
-      </span>
-    </ion-col>
-    <ion-col size="5">Connexion</ion-col>
-  </ion-row>
-
-  <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" novalidate>
-    <ion-list style="justify-items: center;">
-      <ion-item>
-        <ion-label position="floating" color="primary">Login</ion-label>
-        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" required>
-        </ion-input>
-      </ion-item>
-
-      <ion-text color="danger" *ngIf="username.invalid && username.touched">
-        Login obligatoire
-      </ion-text>
-
-      <ion-item><br>
-        <ion-label position="floating" color="primary">Mot de passe</ion-label>
-        <ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
-        </ion-input>
-      </ion-item>
-
-      <ion-text color="danger" *ngIf="password.invalid && password.touched">
-        Mot de passe obligatoire
-      </ion-text>
-    </ion-list>
-
-    <ion-row>
-      <ion-col><br>
-        <ion-button color="success" [disabled]="loginForm.invalid" style="justify-content: left;" type="submit"
-          expand="block">CONNEXION</ion-button>
-      </ion-col>
-    </ion-row>
-
-  </form>
-  <ion-row>
-    <ion-col>
-      <ion-icon name="logo-google" (click)="loginGoogle()"></ion-icon>
-      <ion-button color="primary"  expand="block">
-        Connexion avec google
+<ion-header>
+  <ion-toolbar class='bg_transp' lines="none">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Se connecter</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <strong>En vous connectant vous accepter <a class="sign-up-link" routerLink="/conditions">les conditions d'utilisation</a></strong>
+      <ion-button class="ion-margin" color="success" expand='block' (click)="signWithGoogle()">
+        <ion-icon name="logo-google"></ion-icon>
+        <span class="ion-margin">Google</span>
       </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-button color="primary" routerLink="/register" expand="full " style="border: 70px;">Créer un compte</ion-button>
+      <strong>N'avez - vous pas de compte ? <a class="sign-up-link" routerLink="/register">S'inscrire</a></strong>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" routerLink="/profile">Profile</ion-button>
 </ion-content>

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import SwiperCore, { Autoplay, Keyboard, Pagination, Scrollbar, Zoom } from 'swiper';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import { IonRouterOutlet } from '@ionic/angular';
-SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom]);
+import { AuthserviceService } from 'src/services/authservice.service';
+import { Router } from '@angular/router';
+import { slideOpts } from 'src/app/models/SlidOp';
 
 @Component({
   selector: 'app-alertes',
@@ -12,15 +13,32 @@ SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom]);
 })
 
 export class AlertesPage implements OnInit {
-  photo:any;
-
-
-constructor( public routerOutlet: IonRouterOutlet) { HttpClient; }
+  public Recommendation: any;
+  public slideOptions = slideOpts;
+  private path: string;
+  private db = getFirestore();
+  constructor(
+    private authService: AuthserviceService,
+  ) { }
 
   ngOnInit() {
+    this.path = this.authService.getPath();
+    this.getAlertes();
+  }
+
+
+  public async getAlertes() {
+    const docRef = doc(this.db, 'Recommendations');
+    const snapDoc = await getDoc(docRef);
+    this.Recommendation = snapDoc.data();
+  }
+
+  public onSwiper(swiper) {
+    console.log(swiper);
+  }
+
+  public onSlideChange() {
+    console.log('slide change');
   }
 
 }
-
-
-

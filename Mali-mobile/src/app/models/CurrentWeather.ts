@@ -79,6 +79,24 @@ export interface Alerts {
   enterAnimation?: AnimationBuilder;
   leaveAnimation?: AnimationBuilder;
 }
+export class Alertes{
+  alerte: string;
+  city: string;
+  description: string;
+  image: string;
+  audio: string;
+  public constructor(
+    alerte: string,
+    city: string,
+    description: string, image: string,
+    audio: string){
+    this.alerte = alerte;
+    this.city = city;
+    this.description = description;
+    this.image = image;
+    this.audio = audio;
+  }
+}
 
 
 

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { MenuController } from '@ionic/angular';
@@ -12,23 +11,36 @@ import { Platform } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
+
   public appPages = [
     { title: 'Accueil', url: '/accueil', icon: 'home' },
+    { title: 'Profile', url: '/profile', icon: 'person' },
     { title: 'recommendation', url: '/recommendation', icon: 'folder' },
     { title: 'A propos', url: '/abouts', icon: 'stats-chart' },
     { title: 'Confidentialité', url: '/confidentialite', icon: 'create' },
     { title: 'Connexion', url: '/login', icon: 'person' }
   ];
   public labels = ['Test'];
+  public currentUser: any;
   public dark = false;
 
+
   constructor(private platform: Platform,
-    private router: Router,
     private menu: MenuController,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar) {
-
+    private statusBar: StatusBar)
+    {
+      this.currentUser = this.getUser();
     }
+  getUser(): any {
+
+  }
+
+    public closeMenu(){
+      this.menu.close();
+    }
+
     initializeApp() {
       this.platform.ready().then(() => {
         this.statusBar.styleDefault();

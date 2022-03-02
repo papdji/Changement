@@ -1,41 +1,44 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button>
-        </ion-back-button>
-        <ion-buttons slot="end">
-          <ion-button>
-            <ion-icon name="search-outline" color="dark"></ion-icon>
-          </ion-button>
-          <ion-button class="notification">
-            <ion-icon name="notifications-outline" color="dark"></ion-icon>
-            <span>&nbsp;</span>
-          </ion-button>
-        </ion-buttons>
-      </ion-buttons>
-    </ion-toolbar>
+  <ion-toolbar lines="none">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/alertform"></ion-back-button>
+      <ion-title></ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-item class="ion-text-center ion-no-padding" lines="none">
+    <ion-text class="text-bold">{{ Recommendation?.categorie }}</ion-text>
+  </ion-item>
 </ion-header>
+
 <ion-content>
+    <ion-card>
+      <ion-card-content class="ion-no-margin ion-no-padding">
+        <ion-list>
+          <ion-item class="ion-no-margin ion-no-padding" lines="none">
+            <ion-text>{{ Recommendation?.description }}</ion-text>
+          </ion-item>
+          <ion-item class="ion-no-margin ion-no-padding" lines="none">
+            <audio class="player" controls>
+              <source src="">
+            </audio>
+          </ion-item>
 
-  <!-- List of Text Items -->
-  <ion-list>
-    <ion-list-header>Alertes Recente</ion-list-header>
-
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="../../assets/images/bougouni.jpg" />
-      </ion-avatar>
-      <ion-label>
-        <h2>Bougouni</h2>
-        <h3>Inonndation</h3>
-        <p>La pluie bat son plein et les caniveaux sont de plus en plus plein</p>
-      </ion-label>
-    </ion-item>
-
-  </ion-list>
-    <ion-fab horizontal="end" vertical="center" slot="fixed">
-        <ion-fab-button routerLink="/alertform" color="primary ">
+          <ion-slides pager="true" [options]="slideOptions">
+            <ion-slide><img src=" ({{Recommendation?.image}})" alt="Bla"> </ion-slide>
+            <ion-slide> <img src="../../../assets/images/bougouni.jpg" alt="Bougouni"></ion-slide>
+            <ion-slide><img src=" ({{Recommendation?.image}})" alt="Kayes"></ion-slide>
+            <ion-slide><img src=" ({{Recommendation?.image}})" alt="Bamako"></ion-slide>
+            <ion-slide><img src=" ({{Recommendation?.image}})" alt="Kidal"></ion-slide>
+            <ion-slide><img src=" ({{Recommendation?.image}})" alt="San"></ion-slide>
+          </ion-slides>
+          <span>Vous étes temoin d'une alerte signaler ici.</span>
+          <ion-button class="ion-margin" color="success" expand="block" routerLink="/alertform">
             <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
+            <span>Ajouter une Alerte</span>
+          </ion-button>
+        </ion-list>
+        </ion-card-content>
+    </ion-card>
+
 </ion-content>
