@@ -14,15 +14,15 @@
     <ion-item class='ion-margin' lines="none">
       <ion-label position="floating">Choississez la categorie</ion-label>
       <ion-select>
-        <ion-select id="categorie" name="categorie" ngModel>
+        <ion-select id="category" name="category" ngModel>
           <ion-select-option value="inonndation">Inonndation</ion-select-option>
           <ion-select-option value="incendie">Incendie</ion-select-option>
           <ion-select-option value="secheresse">Sécheresse</ion-select-option>
         </ion-select>
       </ion-select>
     </ion-item>
-    <ion-item class="ion-margin" *ngIf="categorieSelected">
-      <ion-text><strong>Vous avez choisi la categorie : </strong><p>{{ categorieSelected }}</p></ion-text>
+    <ion-item class="ion-margin" *ngIf="categorySelected">
+      <ion-text><strong>Vous avez choisi la categorie : </strong><p>{{ categorySelected }}</p></ion-text>
     </ion-item>
 
     <ion-item class='ion-margin' lines="none">

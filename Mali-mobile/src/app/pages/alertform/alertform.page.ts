@@ -13,7 +13,8 @@ export class AlertformPage implements OnInit {
   data: CurrentWeather;
 
   public citys: any;
-  public categorieSelected: string;
+  public category: any;
+  public categorySelected: string;
   public illnessSelected: string;
   private db = getFirestore();
   private loading: any;
@@ -43,9 +44,9 @@ export class AlertformPage implements OnInit {
     this.loading.dismiss();
   }
 
-  public alerteChanged(data: any) {
+  public categoryChanged(data: any) {
     const convert = data.value.alerte.split('@');
-    this.categorieSelected = convert[1];
+    this.categorySelected = convert[1];
     const city = document.getElementById('city');
     city.setAttribute('value', '');
     this.presentLoadingDefault();
