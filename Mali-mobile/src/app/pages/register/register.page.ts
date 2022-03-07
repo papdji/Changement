@@ -73,12 +73,17 @@ export class RegisterPage implements OnInit {
       }else {
         console.log('User already exists');
       }
+
       this.router.navigateByUrl('/profile');
     }).catch((error) => {
       // User couldn't sign in (bad verification code?)
       console.log('Error: ', error);
     });
+
   }
+  onLoginSuccess() {
+    this.router.navigate(['/profile']);}
+
 
   public setCurrentUser(user: any){
     localStorage.setItem('user', JSON.stringify(user));

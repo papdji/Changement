@@ -12,7 +12,6 @@ import { RecommendationPage } from './recommendation.page';
     FormsModule,
     IonicModule,
     RecommendationPageRoutingModule,
-
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

@@ -4,7 +4,9 @@ import { IonRouterOutlet } from '@ionic/angular';
 import { AuthserviceService } from 'src/services/authservice.service';
 import { Router } from '@angular/router';
 import { slideOpts } from 'src/app/models/SlidOp';
+import SwiperCore, { Autoplay, Keyboard, Pagination, Scrollbar, Zoom } from 'swiper';
 
+SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom]);
 @Component({
   selector: 'app-alertes',
   templateUrl: './alertes.page.html',
