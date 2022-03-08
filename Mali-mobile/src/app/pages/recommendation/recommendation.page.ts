@@ -11,5 +11,6 @@ export class RecommendationPage implements OnInit {
 
   ngOnInit() {
   }
+  
 
 }

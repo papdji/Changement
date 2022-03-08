@@ -61,7 +61,7 @@ export class ProfilePage implements OnInit {
     console.log('File webPath : ', file.webPath);
     console.log('File format : ', file.format);
     const storageRef = ref(storage, 'Files/images/'+file.webPath);
-    // provient de l'API Blob ou File
+    
     uploadBytes(storageRef, this.currentUser.photoURL).then((snapshot) => {
       console.log('Télévchargé un fichier !', snapshot);
     }).catch((error)=>{
@@ -72,7 +72,7 @@ export class ProfilePage implements OnInit {
   public async presentLoadingDefault() {
     this.loading = await this.loadingCtrl.create({
       message: 'Patientez-vous...',
-      duration: 2000,
+      duration: 1000,
     });
     await this.loading.present();
   }

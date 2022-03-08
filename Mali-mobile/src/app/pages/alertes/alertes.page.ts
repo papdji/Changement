@@ -1,8 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
-import { IonRouterOutlet } from '@ionic/angular';
 import { AuthserviceService } from 'src/services/authservice.service';
-import { Router } from '@angular/router';
 import { slideOpts } from 'src/app/models/SlidOp';
 import SwiperCore, { Autoplay, Keyboard, Pagination, Scrollbar, Zoom } from 'swiper';
 
@@ -35,7 +33,7 @@ export class AlertesPage implements OnInit {
     this.Recommendation = snapDoc.data();
   }
 
-  public onSwiper(swiper) {
+  public onSwiper(swiper: any) {
     console.log(swiper);
   }
 
